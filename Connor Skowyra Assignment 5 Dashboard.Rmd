@@ -1,0 +1,38 @@
+---
+title: "Transportation Emissions Dashboard (2015–2022)"
+author: "Connor Skowyra"
+date: "12/04/2025"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+```
+
+## Running Simulated Plot
+
+```{r}
+emissions_df <- tibble(
+Year = 2015:2022,
+Total_Emissions_MtCO2e = c(1550, 1520, 1505, 1480, 1450, 1410, 1380, 1350)
+)
+```
+
+```{r}
+ggplot(emissions_df, aes(x = Year, y = Total_Emissions_MtCO2e)) +
+geom_line(linewidth = 1.2) +
+geom_point(size = 3) +
+labs(
+title = "Total Transportation Emissions by Year",
+x = "Year",
+y = "Emissions (Million metric tons CO₂e)"
+) +
+theme_minimal(base_size = 13)
+```
+# Couple Notes
+
+This project was completed in 2022 and I was not able to obtain the original data for this study as the website did not give me any data so this data is simulated. This line chart displays a decrease in annual emissions from 2015 to 2022.
